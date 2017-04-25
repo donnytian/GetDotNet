@@ -1,0 +1,66 @@
+﻿@model WeChat.Core.TokenResponse
+@{
+    ViewBag.Title = "Index | WeChat";
+    ViewBag.ActiveMenu = "WeChat"; //The menu item will be active for this page.
+}
+
+<h1>WeChat MP Token</h1>
+<div class="row">
+    <fieldset>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>ClientName:</label>
+                <input class="form-control" type="text" name="Raw" readonly="readonly" value="@Model.ClientName">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>ClientId:</label>
+                <input class="form-control" type="text" name="Raw" readonly="readonly" value="@Model.ClientId">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Raw:</label>
+                <input class="form-control" type="text" name="Raw" readonly="readonly" value="@Model.Raw">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>AccessToken:</label>
+                <input class="form-control" type="text" name="AccessToken" readonly="readonly" value="@Model.AccessToken">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>ExpiresIn:</label>
+                <input class="form-control" type="text" name="ExpiresIn" readonly="readonly" value="@Model.ExpiresIn">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>ExpiresAt:</label>
+                <input class="form-control" type="text" name="ExpiresAt" readonly="readonly" value="@Model.ExpiresAt">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>ErrorCode:</label>
+                <input class="form-control" type="text" name="ErrorCode" readonly="readonly" value="@Model.ErrorCode">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>ErrorMessage:</label>
+                <input class="form-control" type="text" name="ErrorMessage" readonly="readonly" value="@Model.ErrorMessage">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12">
+                <a href="@Url.Action("NewToken", "WeChatMp")"><i class="fa fa-key"></i>New Token</a>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
