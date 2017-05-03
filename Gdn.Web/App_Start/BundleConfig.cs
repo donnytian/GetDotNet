@@ -36,8 +36,8 @@ namespace Gdn.Web
                     .Include(
                         "~/Scripts/json2.min.js",
 
-                        "~/Scripts/jquery-2.2.0.min.js",
-                        "~/Scripts/jquery-ui-1.11.4.min.js",
+                        "~/Scripts/jquery-3.1.1.min.js",
+                        "~/Scripts/jquery-ui-1.12.1.min.js",
 
                         "~/Scripts/bootstrap.min.js",
 

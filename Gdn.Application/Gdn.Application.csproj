@@ -142,7 +142,7 @@
     <Compile Include="Users\Dto\ProhibitPermissionInput.cs" />
     <Compile Include="Users\UserAppService.cs" />
     <Compile Include="Users\Dto\UserListDto.cs" />
-    <Compile Include="WeChat\Dto\GetTokensByClientIdInput.cs" />
+    <Compile Include="WeChat\Dto\GetAllTokensInput.cs" />
     <Compile Include="WeChat\Dto\TokenDto.cs" />
     <Compile Include="WeChat\ITokenAppService.cs" />
     <Compile Include="WeChat\TokenAppService.cs" />
@@ -157,6 +157,10 @@
     <ProjectReference Include="..\Gdn.Core\Gdn.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Gdn.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeChat.Core\WeChat.Core.csproj">
+      <Project>{bb31c34c-191b-44ad-a28c-a37f0da19419}</Project>
+      <Name>WeChat.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
