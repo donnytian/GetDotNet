@@ -59,8 +59,9 @@ namespace Gdn.MultiTenancy
                 tenant.EditionId = defaultEdition.Id;
             }
 
-            // Commented out after upgraded to ABP 2.0.1
+            // Removed CheckErrors after upgraded to ABP 2.0.1
             //CheckErrors(await TenantManager.CreateAsync(tenant));
+            await TenantManager.CreateAsync(tenant);
             await CurrentUnitOfWork.SaveChangesAsync(); //To get new tenant's id.
 
             //Create tenant database

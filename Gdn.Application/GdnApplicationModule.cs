@@ -4,7 +4,7 @@ using Abp.Modules;
 
 namespace Gdn
 {
-    [DependsOn(typeof(GdnCoreModule), typeof(AbpAutoMapperModule))]
+    [DependsOn(typeof(GdnCoreModule), typeof(AbpAutoMapperModule), typeof(GdnCommonModule))]
     public class GdnApplicationModule : AbpModule
     {
         public override void PreInitialize()

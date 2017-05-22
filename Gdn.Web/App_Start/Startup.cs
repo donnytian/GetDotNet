@@ -51,10 +51,10 @@ namespace Gdn.Web
             app.MapSignalR();
 
             //ENABLE TO USE HANGFIRE dashboard (Requires enabling Hangfire in GdnWebModule)
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    Authorization = new[] { new AbpHangfireAuthorizationFilter() } //You can remove this line to disable authorization
-            //});
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new AbpHangfireAuthorizationFilter("Pages") } //You can remove this line to disable authorization
+            });
         }
 
         private static FacebookAuthenticationOptions CreateFacebookAuthOptions()

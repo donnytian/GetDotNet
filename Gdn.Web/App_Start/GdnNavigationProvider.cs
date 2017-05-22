@@ -43,7 +43,7 @@ namespace Gdn.Web
                     new MenuItemDefinition(
                         "WeChat",
                         L("WeChat"),
-                        url: "WeChatMp/Token",
+                        url: "WeChatMp/AccountList",
                         icon: "fa fa-wechat",
                         requiredPermissionName: PermissionNames.Pages
                         )

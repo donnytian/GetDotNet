@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Abp.Configuration;
+using Abp.Dependency;
 using Abp.Web.Mvc.Authorization;
 using Gdn.Authorization;
 using Gdn.WeChat;
@@ -34,10 +37,12 @@ namespace Gdn.Web.Controllers.Tencent
         private static TokenResponse _token;
 
         private readonly ITokenAppService _tokenAppService;
+        private readonly IWeChatAccountAppService _weChatAccountAppService;
 
-        public WeChatMpController(ITokenAppService tokenAppService)
+        public WeChatMpController(ITokenAppService tokenAppService, IWeChatAccountAppService weChatAccountAppService)
         {
             _tokenAppService = tokenAppService;
+            _weChatAccountAppService = weChatAccountAppService;
         }
 
         //
@@ -64,11 +69,7 @@ namespace Gdn.Web.Controllers.Tencent
         {
             if (_token == null)
             {
-                var tokens = await _tokenAppService.GetAll(new GetAllTokensInput { ClientId = ClientId });
-                if (tokens.Items.Count > 0)
-                {
-                    _token = tokens.Items[0].MapTo<TokenResponse>();
-                }
+                var token = await _tokenAppService.GetAccessTokenAsync(ClientId);
             }
 
             return View(_token);
@@ -78,22 +79,31 @@ namespace Gdn.Web.Controllers.Tencent
         [ActionName("NewToken")]
         public async Task<ActionResult> NewToken()
         {
-            _token = await TokenClient.RequestAsync();
+            var accounts =  await _weChatAccountAppService.GetAll(new PagedAndSortedResultRequestDto());
+            //_token = await _tokenAppService.RequestAccessTokenAsync()
 
-            var dto = _token.MapTo<TokenDto>();
-            var existed = await _tokenAppService.GetAll(new GetAllTokensInput { ClientId = ClientId });
+            //var dto = _token.MapTo<TokenDto>();
+            //var existed = await _tokenAppService.GetAll(new GetAllTokensInput { ClientId = ClientId });
 
-            if (existed.TotalCount > 0)
-            {
-                dto.Id = existed.Items[0].Id;
-                await _tokenAppService.Update(dto);
-            }
-            else
-            {
-                await _tokenAppService.Create(dto);
-            }
+            //if (existed.TotalCount > 0)
+            //{
+            //    dto.Id = existed.Items[0].Id;
+            //    await _tokenAppService.Update(dto);
+            //}
+            //else
+            //{
+            //    await _tokenAppService.Create(dto);
+            //}
 
             return View("Token", _token);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> AccountList()
+        {
+            var listResultDto = await _weChatAccountAppService.GetAll(new PagedAndSortedResultRequestDto());
+
+            return View(listResultDto);
         }
     }
 }

@@ -35,17 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.2.0.1\lib\net46\Abp.dll</HintPath>
+    <Reference Include="Abp, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.2.0.2\lib\net46\Abp.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.AutoMapper, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.AutoMapper.2.0.1\lib\net46\Abp.AutoMapper.dll</HintPath>
+    <Reference Include="Abp.AutoMapper, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.AutoMapper.2.0.2\lib\net46\Abp.AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.2.0.1\lib\net46\Abp.Zero.dll</HintPath>
+    <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.Common.2.0.1\lib\net46\Abp.Zero.Common.dll</HintPath>
+    <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
@@ -142,6 +142,11 @@
     <Compile Include="Users\Dto\ProhibitPermissionInput.cs" />
     <Compile Include="Users\UserAppService.cs" />
     <Compile Include="Users\Dto\UserListDto.cs" />
+    <Compile Include="WeChat\Dto\WeChatAccountDto.cs" />
+    <Compile Include="WeChat\IWeChatAccountAppService.cs" />
+    <Compile Include="WeChat\IWeChatAccountCache.cs" />
+    <Compile Include="WeChat\WeChatAccountAppService.cs" />
+    <Compile Include="WeChat\WeChatAccountCache.cs" />
     <Compile Include="WeChat\Dto\GetAllTokensInput.cs" />
     <Compile Include="WeChat\Dto\TokenDto.cs" />
     <Compile Include="WeChat\ITokenAppService.cs" />
@@ -154,6 +159,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gdn.Common\Gdn.Common.csproj">
+      <Project>{bede51f9-f1ff-43c8-90ba-7d89af792c55}</Project>
+      <Name>Gdn.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gdn.Core\Gdn.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Gdn.Core</Name>

@@ -7,6 +7,7 @@ using Gdn.Authorization;
 using Gdn.Authorization.Roles;
 using Gdn.MultiTenancy;
 using Gdn.Users;
+using Gdn.WeChat;
 
 namespace Gdn.EntityFramework
 {
@@ -14,15 +15,16 @@ namespace Gdn.EntityFramework
     {
         //TODO: Define an IDbSet for your Entities...
 
-        public virtual IDbSet<Token> Tokens { get; set; }
+        public virtual IDbSet<WeChatAccount> WeChatAccounts { get; set; }
 
         /// <inheritdoc />
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Token>()
-                .Property(t => t.ClientId)
+            /*Sample to set unique index.*/
+            modelBuilder.Entity<WeChatAccount>()
+                .Property(t => t.Name)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute { IsUnique = true }));
         }
 

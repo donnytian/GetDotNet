@@ -1,0 +1,91 @@
+﻿@using Abp.Web.Mvc.Extensions
+@model Abp.Application.Services.Dto.ListResultDto<Gdn.WeChat.Dto.WeChatAccountDto>
+
+@{
+    ViewBag.Title = "AccountList";
+    ViewBag.ActiveMenu = "WeChat"; //The menu item will be active for this page.
+}
+@section scripts
+{
+    @Html.IncludeScript("~/Views/WeChatMp/AccountList.js")
+}
+<div>
+    <h1>WeChat Accounts</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <button data-toggle="modal" data-target="#AccountCreateModal" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Account</button>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Name</th>
+                    <th>App ID</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var acc in Model.Items)
+                {
+                    <tr>
+                        <td>@acc.Id</td>
+                        <td>@acc.Name</td>
+                        <td>@acc.AppId</td>
+                        <td>@acc.Description</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AccountCreateModal" tabindex="-1" role="dialog" aria-labelledby="AccountCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="accountCreateForm" role="form" novalidate class="form-validation">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>Add New Account</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Account ID</label>
+                        <input class="form-control" type="text" name="UserName" required maxlength="64" minlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="Name" class="form-control" required maxlength="256">
+                    </div>
+                    <div class="form-group">
+                        <label>App ID</label>
+                        <input type="text" name="AppId" class="form-control" required maxlength="64">
+                    </div>
+                    <div class="form-group">
+                        <label>App Secret</label>
+                        <input type="text" name="AppSecret" class="form-control" maxlength="64">
+                    </div>
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="text" name="Url" class="form-control" maxlength="4096">
+                    </div>
+                    <div class="form-group">
+                        <label>Token</label>
+                        <input type="text" name="Token" class="form-control" maxlength="64">
+                    </div>
+                    <div class="form-group">
+                        <label>Encoding AES Key</label>
+                        <input type="text" name="EncodingAesKey" class="form-control" maxlength="64">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" name="Description" class="form-control" maxlength="4096">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@L("Cancel")</button>
+                    <button type="submit" class="btn btn-primary blue"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
