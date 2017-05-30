@@ -17,8 +17,8 @@ namespace Gdn.Web.Controllers
         private readonly ILanguageManager _languageManager;
 
         public LayoutController(
-            IUserNavigationManager userNavigationManager, 
-            ISessionAppService sessionAppService, 
+            IUserNavigationManager userNavigationManager,
+            ISessionAppService sessionAppService,
             IMultiTenancyConfig multiTenancyConfig,
             ILanguageManager languageManager)
         {
@@ -28,14 +28,16 @@ namespace Gdn.Web.Controllers
             _languageManager = languageManager;
         }
 
+        #region built-in
+
         [ChildActionOnly]
         public PartialViewResult TopMenu(string activeMenu = "")
         {
             var model = new TopMenuViewModel
-                        {
-                            MainMenu = AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync("MainMenu", AbpSession.ToUserIdentifier())),
-                            ActiveMenuItemName = activeMenu
-                        };
+            {
+                MainMenu = AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync("MainMenu", AbpSession.ToUserIdentifier())),
+                ActiveMenuItemName = activeMenu
+            };
 
             return PartialView("_TopMenu", model);
         }
@@ -44,10 +46,10 @@ namespace Gdn.Web.Controllers
         public PartialViewResult LanguageSelection()
         {
             var model = new LanguageSelectionViewModel
-                        {
-                            CurrentLanguage = _languageManager.CurrentLanguage,
-                            Languages = _languageManager.GetLanguages()
-                        };
+            {
+                CurrentLanguage = _languageManager.CurrentLanguage,
+                Languages = _languageManager.GetLanguages()
+            };
 
             return PartialView("_LanguageSelection", model);
         }
@@ -69,11 +71,41 @@ namespace Gdn.Web.Controllers
             {
                 model = new UserMenuOrLoginLinkViewModel
                 {
-                    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled                    
+                    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled
                 };
             }
 
             return PartialView("_UserMenuOrLoginLink", model);
         }
+
+        #endregion
+
+        #region Admin-LTE
+
+        [ChildActionOnly]
+        public PartialViewResult Header()
+        {
+            return PartialView("_Header");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Footer()
+        {
+            return PartialView("_Footer");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult MainSidebar()
+        {
+            return PartialView("_MainSidebar");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult ControlSidebar()
+        {
+            return PartialView("_ControlSidebar");
+        }
+
+        #endregion
     }
 }

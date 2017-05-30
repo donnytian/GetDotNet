@@ -54,7 +54,10 @@ namespace Gdn.Web
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            /* 
+             * Instead we use gulp to do such tasks. See gulpfile.js for more details.
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            */
 
            // Custom object mappings.
 

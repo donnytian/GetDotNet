@@ -357,6 +357,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="css\common.min.css" />
     <Content Include="css\main.css">
       <DependentUpon>main.less</DependentUpon>
     </Content>
@@ -365,12 +366,15 @@
     </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="gulpfile.js" />
     <Content Include="images\abp-logo.png" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\flags\famfamfam-flags.css" />
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="js\commonJsBottom.min.js" />
+    <Content Include="js\commonJsTop.min.js" />
     <Content Include="js\main.js" />
     <Content Include="css\main.less" />
     <Content Include="css\main.css.map">
@@ -396,6 +400,11 @@
     <Content Include="Abp\Framework\styles\abp.mixings.css.map" />
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
+    <Content Include="package.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\Gdn-Release - Web Deploy.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -453,6 +462,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="yarn.lock" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettingKeys.cs" />
@@ -507,6 +517,12 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\WeChatMp\AccountList.cshtml" />
+    <Content Include="Views\Shared\_AdminLteLayout.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Layout\_Header.cshtml" />
+    <Content Include="Views\Layout\_MainSidebar.cshtml" />
+    <Content Include="Views\Layout\_Footer.cshtml" />
+    <Content Include="Views\Layout\_ControlSidebar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

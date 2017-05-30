@@ -41,7 +41,7 @@
 <div class="modal fade" id="AccountCreateModal" tabindex="-1" role="dialog" aria-labelledby="AccountCreateModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form name="accountCreateForm" role="form" novalidate class="form-validation">
+            <form name="accountCreateForm" role="form" novalidate class="form-validation form-horizontal">
                 <div class="modal-header">
                     <h4 class="modal-title">
                         <span>Add New Account</span>
@@ -49,36 +49,52 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Account ID</label>
+                        <label class="control-label col-sm-3" style="padding-right: 0">Account ID</label>
+                    <div class="col-sm-9">
                         <input class="form-control" type="text" name="UserName" required maxlength="64" minlength="2">
                     </div>
+                    </div>
                     <div class="form-group">
-                        <label>Name</label>
+                        <label class="control-label col-sm-3">Name</label>
+                    <div class="col-sm-9">
                         <input type="text" name="Name" class="form-control" required maxlength="256">
                     </div>
+                    </div>
                     <div class="form-group">
-                        <label>App ID</label>
+                        <label class="control-label col-sm-3">App ID</label>
+                    <div class="col-sm-9">
                         <input type="text" name="AppId" class="form-control" required maxlength="64">
                     </div>
+                    </div>
                     <div class="form-group">
-                        <label>App Secret</label>
+                        <label class="control-label col-sm-3">App Secret</label>
+                    <div class="col-sm-9">
                         <input type="text" name="AppSecret" class="form-control" maxlength="64">
                     </div>
+                    </div>
                     <div class="form-group">
-                        <label>URL</label>
+                        <label class="control-label col-sm-3">URL</label>
+                    <div class="col-sm-9">
                         <input type="text" name="Url" class="form-control" maxlength="4096">
                     </div>
-                    <div class="form-group">
-                        <label>Token</label>
-                        <input type="text" name="Token" class="form-control" maxlength="64">
                     </div>
                     <div class="form-group">
-                        <label>Encoding AES Key</label>
-                        <input type="text" name="EncodingAesKey" class="form-control" maxlength="64">
+                        <label class="control-label col-sm-3">Token</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Token" class="form-control" maxlength="64">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <input type="text" name="Description" class="form-control" maxlength="4096">
+                        <label class="control-label col-sm-3">Encoding Key</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="EncodingAesKey" class="form-control" maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Description</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Description" class="form-control" maxlength="4096">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
