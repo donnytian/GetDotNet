@@ -63,11 +63,20 @@ paths.commonCss = [
     , paths.iCheckCss
 ];
 
-// js included in the layout page
+// css included in simple page such as login
+paths.basicCss = [
+    paths.bootstrapCss
+    , paths.faCss
+    , paths.adminLteCss
+    , paths.iCheckCss
+];
+
+// js included in the top of layout page
 paths.commonJsTop = [
     "./Abp/Framework/scripts/utils/ie10fix.js"
 ];
 
+// js included in the bottom of layout page
 paths.commonJsBottom = [
     paths.jQuery
     , paths.bootstrapJs
@@ -83,10 +92,23 @@ paths.commonJsBottom = [
     , "./node_modules/admin-lte/dist/js/demo.js" //for demo purposes
 ];
 
+paths.basicJs = [
+    paths.jQuery
+    , paths.bootstrapJs
+    , paths.iCheckJs
+];
+
 // other package bundles
 // to be here...
 
 // tasks
+gulp.task("min:basicJs", function () {
+    gulp.src(paths.basicJs)
+        .pipe(concat(paths.jsDest + "/basic.min.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest("."));
+});
+
 gulp.task("min:commonJs", function () {
     gulp.src(paths.commonJsTop)
         .pipe(concat(paths.jsDest + "/commonJsTop.min.js"))
@@ -104,6 +126,13 @@ gulp.task("min:viewsJs", function () {
         .pipe(rename({ suffix: ".min" }))
         .pipe(uglify())
         .pipe(gulp.dest(paths.jsDest));
+});
+
+gulp.task("min:basicCss", function () {
+    gulp.src(paths.basicCss)
+        .pipe(concat(paths.cssDest + "/basic.min.css"))
+        .pipe(cssmin())
+        .pipe(gulp.dest("."));
 });
 
 gulp.task("min:commonCss", function () {
@@ -126,7 +155,7 @@ gulp.task("CopyImagesFromAdminLte", function () {
         .pipe(gulp.dest(paths.imgDest));
 });
 
-gulp.task("min", ["min:commonJs", "min:viewsJs", "min:commonCss", "min:viewsCss"]);
+gulp.task("min", ["min:basicJs", "min:commonJs", "min:viewsJs", "min:basicCss", "min:commonCss", "min:viewsCss"]);
 
 gulp.task("default", function () {
     // place code for your default task here

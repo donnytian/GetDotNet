@@ -357,6 +357,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="css\basic.min.css" />
     <Content Include="css\common.min.css" />
     <Content Include="css\main.css">
       <DependentUpon>main.less</DependentUpon>
@@ -373,6 +374,7 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="js\basic.min.js" />
     <Content Include="js\commonJsBottom.min.js" />
     <Content Include="js\commonJsTop.min.js" />
     <Content Include="js\main.js" />

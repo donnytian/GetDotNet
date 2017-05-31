@@ -1,22 +1,109 @@
-﻿@using Abp.Web.Mvc.Extensions
+﻿@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
 @using Microsoft.Owin.Security
 @model Gdn.Web.Models.Account.LoginFormViewModel
-@section Styles
-{
-    @Html.IncludeStyle("~/css/Account/Login.min.css")
+@{
+    Layout = null;
 }
-@section Scripts
-{
-    @Html.IncludeScript("~/js/Account/Login.min.js")
-}
-<div class="container">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Get Dot Net | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @Styles.Render("~/css/basic.min.css")
+    <script type="text/javascript">
+        //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        var abp = abp || {};
+        abp.appPath = '@ApplicationPath';
+    </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/Scripts/others/html5shiv.js")"></script>
+        <script src="@Url.Content("~/Scripts/others/respond.min.js")"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="../../index2.html"><b>G</b>et <b>D</b>ot <b>N</b>et</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form action="../../index2.html" method="post">
+                <div class="form-group has-feedback">
+                    <input type="email" class="form-control" placeholder="Email">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Password">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                    <i class="fa fa-facebook"></i> Sign in using
+                    Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                    <i class="fa fa-google-plus"></i> Sign in using
+                    Google+
+                </a>
+            </div>
+            <!-- /.social-auth-links -->
+
+            <a href="#">I forgot my password</a><br>
+            <a href="register.html" class="text-center">Register a new membership</a>
+
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+
+    <script src="~/js/basic.min.js"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+</body>
+</html>
+
+@*<div class="container">
     <div id="LoginArea" class="row">
         <div class="col-lg-12">
             <div class="well bs-component">
                 <form id="LoginForm" class="form-horizontal" action="@(Url.Action("Login", "Account"))" method="POST">
                     <fieldset>
                         <legend>@L("LogIn")</legend>
-
                         @if (Model.IsMultiTenancyEnabled)
                         {
                             <div class="form-group">
@@ -30,13 +117,11 @@
                         {
                             <input type="hidden" id="TenancyName" value="">
                         }
-
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <input type="text" class="form-control" id="EmailAddressInput" placeholder="@L("UserNameOrEmail")" required maxlength="@Gdn.Users.User.MaxEmailAddressLength">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <input type="password" class="form-control" id="PasswordInput" placeholder="@L("Password")" required maxlength="@Gdn.Users.User.MaxPlainPasswordLength">
@@ -49,10 +134,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <input id="ReturnUrl" type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
                         <input id="ReturnUrlHash" type="hidden" name="returnUrlHash" />
-
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <button id="LoginButton" type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> @L("LogIn")</button>
@@ -61,15 +145,13 @@
                         </div>
                     </fieldset>
                 </form>
-
                 @{
                     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes().ToList();
                 }
-
                 @if (loginProviders.Count > 0)
                 {
                     <p>@L("OrLoginWith"):</p>
-                    
+
 
                     using (Html.BeginForm("ExternalLogin", "Account", method: FormMethod.Post))
                     {
@@ -88,8 +170,7 @@
                         }
                     }
                 }
-
             </div>
         </div>
     </div>
-</div>
+</div>*@

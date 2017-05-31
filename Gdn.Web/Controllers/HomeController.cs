@@ -11,7 +11,6 @@ namespace Gdn.Web.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public ActionResult Dashboard()
         {
             return View();
