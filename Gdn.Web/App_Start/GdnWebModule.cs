@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Reflection;
+using System.Web;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 using Abp.AutoMapper;
 using Abp.Configuration;
 using Abp.Hangfire;
 using Abp.Hangfire.Configuration;
+using Abp.Localization.Dictionaries;
+using Abp.Localization.Dictionaries.Json;
+using Abp.Localization.Sources;
 using Abp.Zero.Configuration;
 using Abp.Modules;
 using Abp.Web.Mvc;
@@ -45,6 +48,16 @@ namespace Gdn.Web
             {
                 configuration.GlobalConfiguration.UseSqlServerStorage("Default");
             });
+
+            // Add or extend localization files
+            Configuration.Localization.Sources.Extensions.Add(
+                new LocalizationSourceExtensionInfo(
+                    GdnConsts.LocalizationSourceName,
+                    new JsonFileLocalizationDictionaryProvider(
+                        HttpContext.Current.Server.MapPath("~/Localization")
+                    )
+                )
+            );
         }
 
         /// <inheritdoc />
@@ -56,6 +69,7 @@ namespace Gdn.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             /* 
              * Instead we use gulp to do such tasks. See gulpfile.js for more details.
+
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             */
 

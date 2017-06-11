@@ -16,6 +16,7 @@ namespace Gdn.Api
 
             Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(typeof(GdnApplicationModule).Assembly, "app")
+                .WithConventionalVerbs()
                 .Build();
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));

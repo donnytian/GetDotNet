@@ -1,5 +1,6 @@
 ﻿using System;
 using Abp.Castle.Logging.Log4Net;
+using Abp.Timing;
 using Abp.Web;
 using Castle.Facilities.Logging;
 
@@ -12,6 +13,8 @@ namespace Gdn.Web
             AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
                 f => f.UseAbpLog4Net().WithConfig("log4net.config")
             );
+
+            Clock.Provider = ClockProviders.Utc;
 
             base.Application_Start(sender, e);
         }

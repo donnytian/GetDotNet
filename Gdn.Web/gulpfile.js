@@ -17,17 +17,22 @@ paths.jsDest = paths.webroot + "js";
 paths.cssDest = paths.webroot + "css";
 paths.imgDest = paths.webroot + "images";
 
+// json2
+paths.json2 = "./Scripts/json2.min.js";
+
 // jQuery
 paths.jQuery = "./scripts/jquery-3.1.1.min.js";
+paths.jQueryUI = "./scripts/jquery-ui-1.12.1.min.js";
+paths.jQueryValidate = "./scripts/jquery.validate.min.js";
 
 // Bootstrap
 paths.bootstrapCss = "./content/bootstrap.css";
 paths.bootstrapJs = "./scripts/bootstrap.min.js";
 
 // Admin LTE
-paths.adminLteCss = "./node_modules/admin-lte/dist/css/AdminLTE.css";
-paths.adminLteSkinBlueCss = "./node_modules/admin-lte/dist/css/skins/skin-blue.css";
-paths.adminLteJs = "./node_modules/admin-lte/dist/js/app.js";
+paths.adminLteCss = "./content/adminlte/AdminLTE.css";
+paths.adminLteSkinBlueCss = "./content/adminlte/skin-blue.css";
+paths.adminLteJs = "./scripts/adminlte.js";
 
 // Font Awesome
 paths.faCss = "./content/font-awesome.min.css";
@@ -36,19 +41,19 @@ paths.faCss = "./content/font-awesome.min.css";
 paths.iCheckCss = "./node_modules/admin-lte/plugins/iCheck/square/blue.css";
 paths.iCheckJs = "./node_modules/admin-lte/plugins/iCheck/icheck.min.js";
 
-// jVectorMap
-paths.jVectorMapCss = "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css";
-paths.jVectorMapJs = "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js";
-paths.jVectorMapWorldJs = "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"
-
 // Fast Click
-paths.fastClickJs = "./node_modules/admin-lte/plugins/fastclick/fastclick.min.js";
-
-// Spark Line
-paths.sparkLineJs = "./node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js";
+paths.fastClickJs = "./node_modules/admin-lte/plugins/fastclick/fastclick.js";
 
 // Slim Scroll
 paths.slimScrollJs = "./node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js";
+
+// jVectorMap
+paths.jVectorMapCss = "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css";
+paths.jVectorMapJs = "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js";
+paths.jVectorMapWorldJs = "./node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js";
+
+// Spark Line
+paths.sparkLineJs = "./node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js";
 
 // Chart js
 paths.chartjsJs = "./node_modules/admin-lte/plugins/chartjs/Chart.min.js";
@@ -57,18 +62,22 @@ paths.chartjsJs = "./node_modules/admin-lte/plugins/chartjs/Chart.min.js";
 paths.commonCss = [
     paths.bootstrapCss
     , paths.faCss
-    , paths.jVectorMapCss
-    , paths.adminLteCss
-    , paths.adminLteSkinBlueCss
-    , paths.iCheckCss
+    , "./content/lobiadmin/animate.css"
+    , "./content/lobiadmin/weather-icons.min.css"
+    , "./content/lobiadmin/plugins/lobibox.css"
+    , "./content/lobiadmin/plugins/lobilist.css"
+    , "./content/lobiadmin/plugins/lobipanel.css"
+    , "./content/lobiadmin/lobiadmin.css"
+    , "./content/site.css"
 ];
 
 // css included in simple page such as login
 paths.basicCss = [
     paths.bootstrapCss
     , paths.faCss
-    , paths.adminLteCss
-    , paths.iCheckCss
+    , "./content/lobiadmin/plugins/lobibox.css"
+    , "./content/lobiadmin/animate.css"
+    , "./content/site.css"
 ];
 
 // js included in the top of layout page
@@ -77,29 +86,59 @@ paths.commonJsTop = [
 ];
 
 // js included in the bottom of layout page
-paths.commonJsBottom = [
-    paths.jQuery
+paths.commonJsBottom = [paths.json2
+    , paths.jQuery
+    , paths.jQueryUI
+    , paths.jQueryValidate
     , paths.bootstrapJs
     , paths.fastClickJs
-    , paths.adminLteJs
-    , paths.sparkLineJs
-    , paths.jVectorMapJs
-    , paths.jVectorMapWorldJs
     , paths.slimScrollJs
-    , paths.chartjsJs
-    , paths.iCheckJs
-    , "./node_modules/admin-lte/dist/js/pages/dashboard2.js" //for demo purposes
-    , "./node_modules/admin-lte/dist/js/demo.js" //for demo purposes
+    , "./Scripts/moment-with-locales.min.js"
+    , "./js/lobiadmin/plugins/lobibox.js"
+    , "./js/lobiadmin/plugins/lobilist.min.js"
+    , "./js/lobiadmin/plugins/lobipanel.min.js"
+    , "./js/lobiadmin/config.js"                  //Make sure that config.js file is loaded before LobiAdmin.js
+    , "./js/lobiadmin/lobiadmin.js"
+    , "./js/lobiadmin/app.js"
+
+    , "./Scripts/jquery.blockUI.js"
+    , "./Scripts/others/spinjs/spin.js"
+    , "./Scripts/others/spinjs/jquery.spin.js"
+    , "./Abp/Framework/scripts/abp.js",
+    , "./Abp/Framework/scripts/libs/abp.jquery.js",
+    , "./Abp/Framework/scripts/libs/abp.blockUI.js",
+    , "./Abp/Framework/scripts/libs/abp.spin.js",
+    , "./Abp/Framework/scripts/libs/abp.lobibox.js"
+    , "./Abp/Framework/scripts/libs/abp.lobiadmin.js"
+    , "./js/main.js"
 ];
 
-paths.basicJs = [
-    paths.jQuery
+// js included in simple page such as login.
+paths.basicJs = [paths.json2
+    , paths.jQuery
+    , paths.jQueryUI
+    , paths.jQueryValidate
     , paths.bootstrapJs
-    , paths.iCheckJs
+    , "./Scripts/moment-with-locales.min.js"
+    , "./js/lobiadmin/plugins/lobibox.js"
+    , "./Scripts/jquery.blockUI.js",
+    , "./Scripts/others/spinjs/spin.js"
+    , "./Scripts/others/spinjs/jquery.spin.js"
+    , "./Abp/Framework/scripts/abp.js",
+    , "./Abp/Framework/scripts/libs/abp.jquery.js",
+    , "./Abp/Framework/scripts/libs/abp.blockUI.js",
+    , "./Abp/Framework/scripts/libs/abp.spin.js",
+    , "./Abp/Framework/scripts/libs/abp.lobibox.js"
 ];
 
-// other package bundles
+// other package bundles for specific page
 // to be here...
+
+paths.forDashboard = [
+    , "./js/lobiadmin/plugins/chart.js"
+    , "./js/lobiadmin/plugins/jquery.sparkline.js"
+    , "./js/lobiadmin/plugins/fullcalendar.js"
+];
 
 // tasks
 gulp.task("min:basicJs", function () {
@@ -111,12 +150,12 @@ gulp.task("min:basicJs", function () {
 
 gulp.task("min:commonJs", function () {
     gulp.src(paths.commonJsTop)
-        .pipe(concat(paths.jsDest + "/commonJsTop.min.js"))
+        .pipe(concat(paths.jsDest + "/commonTop.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest("."));
 
     gulp.src(paths.commonJsBottom)
-        .pipe(concat(paths.jsDest + "/commonJsBottom.min.js"))
+        .pipe(concat(paths.jsDest + "/commonBottom.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest("."));
 });
@@ -133,6 +172,12 @@ gulp.task("min:basicCss", function () {
         .pipe(concat(paths.cssDest + "/basic.min.css"))
         .pipe(cssmin())
         .pipe(gulp.dest("."));
+
+    // Specially for login.css since it is large.
+    gulp.src("./views/account/login.css")
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(cssmin())
+        .pipe(gulp.dest(paths.cssDest));
 });
 
 gulp.task("min:commonCss", function () {
@@ -150,12 +195,19 @@ gulp.task("min:viewsCss", function () {
         .pipe(gulp.dest(paths.cssDest));
 });
 
+gulp.task("min:misc", function () {
+    gulp.src(paths.forDashboard)
+        .pipe(concat(paths.jsDest + "/dashboard.min.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest("."));
+});
+
 gulp.task("CopyImagesFromAdminLte", function () {
     gulp.src("./node_modules/admin-lte/dist/img/**/*")
         .pipe(gulp.dest(paths.imgDest));
 });
 
-gulp.task("min", ["min:basicJs", "min:commonJs", "min:viewsJs", "min:basicCss", "min:commonCss", "min:viewsCss"]);
+gulp.task("min", ["min:basicJs", "min:commonJs", "min:viewsJs", "min:basicCss", "min:commonCss", "min:viewsCss", "min:misc"]);
 
 gulp.task("default", function () {
     // place code for your default task here

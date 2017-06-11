@@ -1,4 +1,5 @@
-﻿using Abp.Application.Services.Dto;
+﻿using System;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Gdn.Users;
 
@@ -14,5 +15,9 @@ namespace Gdn.Sessions.Dto
         public string UserName { get; set; }
 
         public string EmailAddress { get; set; }
+
+        public string FullName { get; set; }
+
+        public DateTime? LastLoginTime { get; set; }
     }
 }

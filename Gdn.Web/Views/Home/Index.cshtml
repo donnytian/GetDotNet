@@ -1,4 +1,5 @@
 ﻿@{
+    Layout = IsAjax ? null : "~/Views/Shared/_LayoutLobiAdmin.cshtml";
     ViewBag.ActiveMenu = "Home"; //The menu item will be active for this page.
 }
 <h1>@L("WellcomeMessage")</h1>

@@ -27,4 +27,23 @@
         $.blockUI.defaults.baseZ = 2000;
     }
 
+    // Show welcome notification.
+    $(document).ready(function () {
+        setTimeout(function () {
+            //All demo scripts go here
+            Lobibox.notify('info', {
+                img: '/img/logo/logo.png',
+                sound: false,
+                position: 'top right',
+                delay: 8000,
+                showClass: 'fadeInDown',
+                title: 'Welcome to GetDotNet.',
+                msg: 'GetDotNet is a demo web app based on ASP Boilerplate and LobiAdmin template.'
+            });
+        }, 3000);
+
+        $(document).on('submit', 'form', function (ev) {
+            ev.preventDefault();
+        });
+    });
 })(jQuery);

@@ -1,10 +1,12 @@
 ﻿using System.Web.Mvc;
 using Abp.Application.Navigation;
 using Abp.Configuration.Startup;
+using Abp.Dependency;
 using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.Threading;
 using Gdn.Sessions;
+using Gdn.Web.Models;
 using Gdn.Web.Models.Layout;
 
 namespace Gdn.Web.Controllers
@@ -28,7 +30,7 @@ namespace Gdn.Web.Controllers
             _languageManager = languageManager;
         }
 
-        #region built-in
+        #region ABP built-in
 
         [ChildActionOnly]
         public PartialViewResult TopMenu(string activeMenu = "")
@@ -80,30 +82,20 @@ namespace Gdn.Web.Controllers
 
         #endregion
 
-        #region Admin-LTE
+        #region LobiAdmin
 
         [ChildActionOnly]
-        public PartialViewResult Header()
+        public PartialViewResult MainMenu(string activeMenu = "")
         {
-            return PartialView("_Header");
-        }
+            var model = new MainMenuViewModel
+            {
+                LoginInformations = AsyncHelper.RunSync(() => _sessionAppService.GetCurrentLoginInformations()),
+                IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled,
+                MainMenu = AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync("MainMenu", AbpSession.ToUserIdentifier())),
+                ActiveMenuItemName = activeMenu
+            };
 
-        [ChildActionOnly]
-        public PartialViewResult Footer()
-        {
-            return PartialView("_Footer");
-        }
-
-        [ChildActionOnly]
-        public PartialViewResult MainSidebar()
-        {
-            return PartialView("_MainSidebar");
-        }
-
-        [ChildActionOnly]
-        public PartialViewResult ControlSidebar()
-        {
-            return PartialView("_ControlSidebar");
+            return PartialView("_MainMenu", model);
         }
 
         #endregion

@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "admin-lte": "^2.3.11"
+    "admin-lte": "^2.3.11",
+    "pnotify": "^3.2.0",
+    "sweetalert2": "^6.6.4"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

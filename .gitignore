@@ -252,4 +252,4 @@ paket-files/
 *.sln.iml
 
 # Web application
-Logs.txt
+/Gdn.Web/App_Data/Logs

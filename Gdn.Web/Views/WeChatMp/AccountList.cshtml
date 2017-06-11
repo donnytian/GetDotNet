@@ -1,29 +1,23 @@
-﻿@using Abp.Web.Mvc.Extensions
-@model Abp.Application.Services.Dto.ListResultDto<Gdn.WeChat.Dto.WeChatAccountDto>
+﻿@model Abp.Application.Services.Dto.ListResultDto<Gdn.WeChat.Dto.WeChatAccountDto>
 
-@{
-    ViewBag.Title = "AccountList";
-    ViewBag.ActiveMenu = "WeChat"; //The menu item will be active for this page.
-}
-@section scripts
-{
-    @Html.IncludeScript("~/Views/WeChatMp/AccountList.js")
-}
 <div>
-    <h1>WeChat Accounts</h1>
-    <div class="row">
-        <div class="col-md-12">
-            <button data-toggle="modal" data-target="#AccountCreateModal" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Account</button>
-            <table class="table">
-                <thead>
+    <h1 class="page-header-dashed">WeChat Accounts</h1>
+    <div class="margin-bottom-20">
+        <button data-toggle="modal" data-target="#AccountCreateModal" class="btn btn-success">
+            <i class="fa fa-plus"></i> Add Account
+        </button>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
                 <tr>
                     <th>Account ID</th>
                     <th>Name</th>
                     <th>App ID</th>
                     <th>Description</th>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
                 @foreach (var acc in Model.Items)
                 {
                     <tr>
@@ -33,10 +27,10 @@
                         <td>@acc.Description</td>
                     </tr>
                 }
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
+
 </div>
 <div class="modal fade" id="AccountCreateModal" tabindex="-1" role="dialog" aria-labelledby="AccountCreateModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
@@ -50,33 +44,33 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="control-label col-sm-3" style="padding-right: 0">Account ID</label>
-                    <div class="col-sm-9">
-                        <input class="form-control" type="text" name="UserName" required maxlength="64" minlength="2">
-                    </div>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="UserName" required maxlength="64" minlength="2">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="Name" class="form-control" required maxlength="256">
-                    </div>
+                        <div class="col-sm-9">
+                            <input type="text" name="Name" class="form-control" required maxlength="256">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">App ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="AppId" class="form-control" required maxlength="64">
-                    </div>
+                        <div class="col-sm-9">
+                            <input type="text" name="AppId" class="form-control" required maxlength="64">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">App Secret</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="AppSecret" class="form-control" maxlength="64">
-                    </div>
+                        <div class="col-sm-9">
+                            <input type="text" name="AppSecret" class="form-control" maxlength="64">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">URL</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="Url" class="form-control" maxlength="4096">
-                    </div>
+                        <div class="col-sm-9">
+                            <input type="text" name="Url" class="form-control" maxlength="4096">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3">Token</label>
@@ -85,7 +79,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-3">Encoding Key</label>
+                        <label class="control-label col-sm-3">Encoding AES Key</label>
                         <div class="col-sm-9">
                             <input type="text" name="EncodingAesKey" class="form-control" maxlength="64">
                         </div>
@@ -105,3 +99,4 @@
         </div>
     </div>
 </div>
+<script src="~/js/WeChatMp/AccountList.min.js"></script>

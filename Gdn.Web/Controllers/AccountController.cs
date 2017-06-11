@@ -16,11 +16,13 @@ using Abp.Extensions;
 using Abp.Threading;
 using Abp.UI;
 using Abp.Web.Models;
+using Abp.Web.Mvc.Authorization;
 using Gdn.Authorization;
 using Gdn.Authorization.Roles;
 using Gdn.MultiTenancy;
 using Gdn.Users;
 using Gdn.Web.Controllers.Results;
+using Gdn.Web.Filters;
 using Gdn.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -28,6 +30,7 @@ using Microsoft.Owin.Security;
 
 namespace Gdn.Web.Controllers
 {
+    [DisableNonDefaultViewRedirect]
     public class AccountController : GdnControllerBase
     {
         private readonly TenantManager _tenantManager;
@@ -154,6 +157,8 @@ namespace Gdn.Web.Controllers
             }
         }
 
+        [HttpPost]
+        [AbpMvcAuthorize]
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();

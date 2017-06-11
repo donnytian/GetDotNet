@@ -1,0 +1,53 @@
+﻿{
+  "MainMenu": [
+    {
+      "Name": "Home",
+      "L10nKey": "HomePage",
+      "Url": "",
+      "Icon": "fa fa-home",
+      "RequiresAuthentication": true
+    },
+    {
+      "Name": "Dashboard",
+      "L10nKey": "DashboardPage",
+      "Url": "Home/Dashboard",
+      "Icon": "fa fa-dashboard",
+      "RequiresAuthentication": true
+    },
+    {
+      "Name": "Tenants",
+      "L10nKey": "Tenants",
+      "Url": "Tenants",
+      "Icon": "fa fa-globe",
+      "RequiredPermissionName": "Pages.Tenants"
+    },
+    {
+      "Name": "Users",
+      "L10nKey": "Users",
+      "Url": "Users",
+      "Icon": "fa fa-users",
+      "RequiredPermissionName": "Pages.Users"
+    },
+    {
+      "Name": "WeChat",
+      "L10nKey": "WeChat",
+      "Icon": "fa fa-wechat",
+      "RequiredPermissionName": "Pages",
+      "Items": [
+        {
+          "Name": "WeChat.MpAccount",
+          "L10nKey": "MpAccount",
+          "Url": "WeChatMp/AccountList",
+          "Icon": "",
+          "RequiredPermissionName": "Pages"
+        }
+      ]
+    },
+    {
+      "Name": "About",
+      "L10nKey": "About",
+      "Url": "About",
+      "Icon": "fa fa-info"
+    }
+  ]
+}

@@ -14,17 +14,21 @@
                 return;
             }
 
-            var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
-            
             abp.ui.setBusy(_$modal);
+            var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
+
             _userService.createUser(user).done(function () {
+                // _$modal.find("[data-dismiss=modal]:first").click();
                 _$modal.modal('hide');
-                location.reload(true); //reload page to see new user!
+                // Model hide animation will takes some time, we have to reload until it is hidden(in its hidden event).
+                _$modal.on('hidden.bs.modal', function () {
+                    $('body').data('lobiAdmin').reload();
+                });
             }).always(function () {
                 abp.ui.clearBusy(_$modal);
             });
+
         });
-        
         _$modal.on('shown.bs.modal', function () {
             _$modal.find('input:not([type=hidden]):first').focus();
         });

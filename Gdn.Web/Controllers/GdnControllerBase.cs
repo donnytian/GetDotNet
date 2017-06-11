@@ -1,6 +1,7 @@
 ﻿using Abp.IdentityFramework;
 using Abp.UI;
 using Abp.Web.Mvc.Controllers;
+using Gdn.Web.Filters;
 using Microsoft.AspNet.Identity;
 
 namespace Gdn.Web.Controllers
@@ -8,6 +9,7 @@ namespace Gdn.Web.Controllers
     /// <summary>
     /// Derive all Controllers from this class.
     /// </summary>
+    [NonDefaultViewRedirectActionFilter]
     public abstract class GdnControllerBase : AbpController
     {
         protected GdnControllerBase()

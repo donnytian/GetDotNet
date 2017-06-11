@@ -3,6 +3,11 @@
     $(function () {
         $('#LoginButton').click(function (e) {
             e.preventDefault();
+
+            if (!$("#LoginForm").valid()) {
+                return;
+            }
+
             abp.ui.setBusy(
                 $('#LoginArea'),
                 abp.ajax({
