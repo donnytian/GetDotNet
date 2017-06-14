@@ -67,10 +67,10 @@ namespace WeChat.Core
 
             var response = await client.ExecuteTaskAsync<TokenResponse>(request, cancellationToken);
 
-            return ParseResonse(response);
+            return ParseResponse(response);
         }
 
-        private TokenResponse ParseResonse(IRestResponse<TokenResponse> response)
+        private TokenResponse ParseResponse(IRestResponse<TokenResponse> response)
         {
             var result = response.Data ?? new TokenResponse();
             result.ClientId = ClientId;

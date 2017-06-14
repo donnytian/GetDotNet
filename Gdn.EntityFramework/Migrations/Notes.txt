@@ -1,0 +1,13 @@
+﻿// add a migration.
+// If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration Abp2.1' again.
+add-migration Abp2.1
+
+// update local default data, try below command in Package Manager Console:
+// choose entity framework project in drop-down list
+update-database
+
+// update remote DB, try below
+PM> update-database -connectionstring "Server=xxx,1433;Initial Catalog=yyy;User ID=zzz;Password=zz"
+cmdlet Update-Database at command pipeline position 1
+Supply values for the following parameters:
+ConnectionProviderName: System.Data.SqlClient
