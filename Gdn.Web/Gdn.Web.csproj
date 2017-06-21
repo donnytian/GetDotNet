@@ -180,6 +180,7 @@
     <Reference Include="Microsoft.Owin.StaticFiles, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.1.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
@@ -529,6 +530,17 @@
     <Content Include="Abp\Framework\styles\abp.mixings.css.map" />
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
+    <Content Include="Content\reports\Countries.xsc">
+      <DependentUpon>Countries.xsd</DependentUpon>
+    </Content>
+    <None Include="Content\reports\Countries.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Countries.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Content\reports\Countries.xss">
+      <DependentUpon>Countries.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Gdn-Release - Web Deploy.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -587,9 +599,15 @@
     <Compile Include="App_Start\GdnWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Content\reports\Countries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Countries.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\Tencent\WeChatMpController.cs" />
@@ -611,6 +629,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
+    <Compile Include="Models\Report\WorldModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\GdnWebViewPageBase.cs" />
     <Compile Include="Views\UrlChecker.cs" />
@@ -645,6 +664,7 @@
     <Content Include="sound\lobibox\sound6.ogg" />
     <Content Include="Views\Shared\_LayoutLobiAdmin.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -689,6 +709,9 @@
     <TypeScriptCompile Include="Abp\Framework\scripts\abp.d.ts" />
     <TypeScriptCompile Include="Abp\Framework\scripts\libs\abp.jquery.d.ts" />
     <TypeScriptCompile Include="Abp\Framework\scripts\libs\abp.signalr.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\reports\Countries.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

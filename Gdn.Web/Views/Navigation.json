@@ -44,6 +44,13 @@
       ]
     },
     {
+      "Name": "PdfDemo",
+      "L10nKey": "PdfDemo",
+      "Url": "Report",
+      "Icon": "fa fa-file-pdf-o",
+      "RequiredPermissionName": "Pages"
+    },
+    {
       "Name": "About",
       "L10nKey": "About",
       "Url": "About",
