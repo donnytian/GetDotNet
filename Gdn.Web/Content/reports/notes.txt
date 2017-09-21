@@ -1,0 +1,11 @@
+﻿RDLC report publish steps:
+1. In dev machine, install extension of "Microsoft Rdlc Report Designer for Visual Studio".
+2. In project, add reference to Microsoft.ReportViewer.WebForms
+3. Copy DLLs Microsoft.ReportViewer.Common.dll and Microsoft.ReportViewer.ProcessingObjectModel to a project folder such as "libs".
+4. Make above DLLs Copy to Output Directory in VS property window.
+5. In VS solution explorer, set Build Action to "Content" for all RDLC and XSD files.
+
+Note:
+RDLC will NOT working on Azure Web Sites/App Service with Free/Shared scale.
+you will get error "Parameter is not valid." as some low level GDI+ API is not allowed due to "security" reason.
+https://social.msdn.microsoft.com/forums/azure/en-US/b4a6eb43-0013-435f-9d11-00ee26a8d017/report-viewer-error-on-export-pdf-or-excel-from-azure-web-sites

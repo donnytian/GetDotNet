@@ -323,6 +323,7 @@
     <Content Include="Content\lobiadmin\plugins\lobilist.css" />
     <Content Include="Content\lobiadmin\plugins\lobipanel.css" />
     <Content Include="Content\lobiadmin\weather-icons.min.css" />
+    <None Include="Content\reports\notes.txt" />
     <Content Include="Content\site.css" />
     <Content Include="css\basic.min.css" />
     <Content Include="css\common.min.css" />
@@ -508,6 +509,12 @@
     <Content Include="js\Tenants\Index.min.js" />
     <Content Include="js\Users\Index.min.js" />
     <Content Include="js\WeChatMp\AccountList.min.js" />
+    <None Include="libs\Microsoft.ReportViewer.Common.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libs\Microsoft.ReportViewer.ProcessingObjectModel.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="log4net.config" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
@@ -533,11 +540,11 @@
     <Content Include="Content\reports\Countries.xsc">
       <DependentUpon>Countries.xsd</DependentUpon>
     </Content>
-    <None Include="Content\reports\Countries.xsd">
+    <Content Include="Content\reports\Countries.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Countries.Designer.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="Content\reports\Countries.xss">
       <DependentUpon>Countries.xsd</DependentUpon>
     </Content>
@@ -711,7 +718,7 @@
     <TypeScriptCompile Include="Abp\Framework\scripts\libs\abp.signalr.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Content\reports\Countries.rdlc" />
+    <Content Include="Content\reports\Countries.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
